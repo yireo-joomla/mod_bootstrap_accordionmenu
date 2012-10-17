@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="mod_bootstrap_accordionmenu" default="build" basedir=".">
+
+    <!-- General variable definitions -->
+    <exec command="date +%Y-%m-%d" outputProperty="date" />
+    <exec command="echo /tmp/build.$$" outputProperty="tmp" />
+    <exec command="cd ../;pwd" outputProperty="root" />
+    <echo>Note: root is ${root}</echo>
+
+    <property name="source" value="${root}/source" />
+    <property name="package_dir" value="${root}/package" />
+    <property name="tmp_dir" value="${root}/build/tmp" />
+    <property name="gpl" value="${root}/build/gpl-3.0.txt" />
+
+    <!-- Public Target: build -->
+    <target name="build" description="Build Joomla! package">
+
+        <exec command="mkdir -p ${tmp_dir}" />
+
+        <copy todir="${tmp_dir}">
+            <fileset dir="${source}/media">
+                <include name="mod_bootstrap_accordionmenu/**" />
+            </fileset>
+            <fileset dir="${source}/modules/mod_bootstrap_accordionmenu">
+                <include name="**" />
+            </fileset>
+            <fileset dir="${source}/language/en-GB">
+                <include name="**" />
+            </fileset>
+        </copy>
+        <copy file="${gpl}" tofile="${tmp_dir}/LICENSE.txt" overwrite="true" />
+
+        <exec command="rm ${package_dir}/mod_bootstrap_accordionmenu.zip" />
+        <zip destfile="${package_dir}/mod_bootstrap_accordionmenu.zip">
+            <fileset dir="${tmp_dir}">
+                <include name="**/**" />
+            </fileset>
+        </zip>
+
+        <exec command="rm ${package_dir}/mod_bootstrap_accordionmenu.tgz" />
+        <tar destfile="${package_dir}/mod_bootstrap_accordionmenu.tgz" compression="gzip">
+            <fileset dir="${tmp_dir}">
+                <include name="**/**" />
+            </fileset>
+        </tar>
+    </target>
+
+</project>
