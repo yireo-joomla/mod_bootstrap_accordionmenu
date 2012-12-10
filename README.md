@@ -15,8 +15,16 @@ Requirements:
 Steps to get it working:
 * Install this module and use it like a normal menu-module
 
-Todo:
+CHANGELOG
+=========
+version 1.0.0:
+* Initial release
+
+version 1.0.1:
 * Add a parameter to disable CSS-stylesheet
-* Allow for a template-override of the CSS-stylesheet
-* Hover instead of click to expand?
+* Optional hover to expend submenu
 * Make level 0 clickable once expanded
+
+pending:
+* Allow for a template-override of the CSS-stylesheet
+
