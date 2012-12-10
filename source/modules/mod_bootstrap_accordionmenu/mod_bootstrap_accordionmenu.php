@@ -21,7 +21,7 @@ if($params->get('load_css', 1) == 1) {
 
 // Load JavaScript
 if($params->get('load_js', 1) == 1) {
-    $document->addStylesheet('media/mod_bootstrap_accordionmenu/js/default.js');
+    $document->addScript('media/mod_bootstrap_accordionmenu/js/default.js');
 }
 
 // Include the syndicate functions only once
