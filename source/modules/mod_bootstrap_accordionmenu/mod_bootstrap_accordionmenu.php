@@ -11,9 +11,18 @@
 // Deny direct access
 defined('_JEXEC') or die;
 
-// Load CSS
+// Global variables    
 $document = JFactory::getDocument();
-$document->addStylesheet('media/mod_bootstrap_accordionmenu/css/default.css');
+
+// Load CSS
+if($params->get('load_css', 1) == 1) {
+    $document->addStylesheet('media/mod_bootstrap_accordionmenu/css/default.css');
+}
+
+// Load JavaScript
+if($params->get('load_js', 1) == 1) {
+    $document->addStylesheet('media/mod_bootstrap_accordionmenu/js/default.js');
+}
 
 // Include the syndicate functions only once
 require_once __DIR__.'/helper.php';
@@ -28,5 +37,5 @@ if(empty($tag_id)) $tag_id = md5($params);
 
 // If the toplevel is not empty, load the template
 if(count($parents)) {
-	require JModuleHelper::getLayoutPath('mod_bootstrap_accordionmenu', $params->get('layout', 'default'));
+    require JModuleHelper::getLayoutPath('mod_bootstrap_accordionmenu', $params->get('layout', 'default'));
 }

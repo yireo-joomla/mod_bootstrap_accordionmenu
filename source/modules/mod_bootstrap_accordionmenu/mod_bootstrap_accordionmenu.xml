@@ -61,6 +61,14 @@
                 name="advanced">
                 <field name="tag_id" type="text" label="MOD_MENU_FIELD_TAG_ID_LABEL" description="MOD_MENU_FIELD_TAG_ID_DESC" />
                 <field name="class_sfx" type="text" label="MOD_MENU_FIELD_CLASS_LABEL" description="MOD_MENU_FIELD_CLASS_DESC" />
+                <field name="load_css" type="list" default="1" label="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_CSS" description="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_CSS_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="load_js" type="list" default="1" label="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_JS" description="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_JS_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
                 <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
                 <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
                 <field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
