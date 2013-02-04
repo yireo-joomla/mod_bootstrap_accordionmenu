@@ -3,7 +3,7 @@
  * Joomla! module - Bootstrap Accordion Menu
  *
  * @author Yireo (info@yireo.com)
- * @copyright Copyright 2012 Yireo.com. All rights reserved
+ * @copyright Copyright 2013 Yireo.com. All rights reserved
  * @license GNU Public License
  * @link http://www.yireo.com
  */
@@ -103,7 +103,20 @@ abstract class modBootstrapAccordionMenuHelper
         if($i % 2 == 0) $item->classes[] = 'even';
         if($i % 2 == 1) $item->classes[] = 'odd';
 
-        $item->href = JRoute::_('index.php?Itemid='.$item->id);
+        switch($item->type) :
+            case 'separator':
+                $item->href = null;
+                break;
+        
+            case 'url':
+                $item->href = $item->flink;
+                break;
+            
+            default:
+                $item->href = JRoute::_('index.php?Itemid='.$item->id);
+                break;
+        endswitch;
+
         $item->childs = self::getChildren($item->id);
 
         return $item;
