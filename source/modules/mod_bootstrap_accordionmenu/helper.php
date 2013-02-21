@@ -111,6 +111,10 @@ abstract class modBootstrapAccordionMenuHelper
             case 'url':
                 $item->href = $item->flink;
                 break;
+        
+            case 'alias':
+                $item->href = JRoute::_('index.php?Itemid='.$item->params->get('aliasoptions', null));
+                break;
             
             default:
                 $item->href = JRoute::_('index.php?Itemid='.$item->id);
