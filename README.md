@@ -26,6 +26,15 @@ version 1.0.1:
 * Optional hover to expend submenu
 * Make level 0 clickable once expanded
 
+version 1.0.2:
+* Code compliance
+
+version 1.0.3: 
+* Language files
+
+version 1.0.4:
+* Pull request for alias-support
+
 pending:
 * Allow for a template-override of the CSS-stylesheet
 
