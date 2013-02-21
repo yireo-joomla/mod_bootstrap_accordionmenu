@@ -136,9 +136,9 @@ abstract class modBootstrapAccordionMenuHelper
     {
         static $items = null;
         if(!is_array($items)) {
-		    $app = JFactory::getApplication();
-    		$menu = $app->getMenu();
-	    	$items = $menu->getItems('menutype', $params->get('menutype'));
+            $app = JFactory::getApplication();
+            $menu = $app->getMenu();
+            $items = $menu->getItems('menutype', $params->get('menutype'));
             // @todo: Implement ACLs
         }
         return $items;
@@ -153,7 +153,7 @@ abstract class modBootstrapAccordionMenuHelper
     public static function submenu($items)
     {
         if(!empty($items)) {
-    	    require JModuleHelper::getLayoutPath('mod_bootstrap_accordionmenu', 'default_submenu');
+            require JModuleHelper::getLayoutPath('mod_bootstrap_accordionmenu', 'default_submenu');
         }
     }
 }
