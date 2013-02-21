@@ -1,5 +1,6 @@
 Bootstrap Accordion Menu Module
 ===============================
+Homepage: http://www.yireo.com/software/joomla-extensions/bootstrap-accordion
 
 This Joomla! module allows you to display a Joomla! menu within a Bootstrap Accordion structure.
 Check the following URL for details on the accordion of Twitter Bootstrap:
