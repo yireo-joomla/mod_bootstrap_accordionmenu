@@ -44,7 +44,7 @@ abstract class modBootstrapAccordionMenuHelper
             foreach($items as $item) {
                 if($item->level == $params->get('startLevel', 1)) {
 
-                    $item = self::prepareItem($item, $i);
+                    $item = self::prepareItem($item, $i, $params);
                     $item->html_id = md5($params).'-'.$item->id;
 
                     $parents[] = $item;
@@ -70,7 +70,7 @@ abstract class modBootstrapAccordionMenuHelper
             $i = 0;
             foreach($items as $item) {
                 if($item->parent_id == $parent_id) {
-                    $item = self::prepareItem($item, $i);
+                    $item = self::prepareItem($item, $i, $params);
                     $childs[] = $item;
                 }
                 $i++;
@@ -86,7 +86,7 @@ abstract class modBootstrapAccordionMenuHelper
      * @param int $i
      * @return object $item
      */
-    public static function prepareItem($item, $i)
+    public static function prepareItem($item, $i, $params)
     {
         $active = self::getActive();
         if(!empty($active->tree)) {
@@ -134,14 +134,15 @@ abstract class modBootstrapAccordionMenuHelper
      */
     public static function getItems($params = null)
     {
-        static $items = null;
-        if(!is_array($items)) {
+        static $items = array();
+        $paramsHash = md5(serialize($params));
+        if(empty($items[$paramsHash])) {
             $app = JFactory::getApplication();
             $menu = $app->getMenu();
-            $items = $menu->getItems('menutype', $params->get('menutype'));
+            $items[$paramsHash] = $menu->getItems('menutype', $params->get('menutype'));
             // @todo: Implement ACLs
         }
-        return $items;
+        return $items[$paramsHash];
     }
 
     /*
