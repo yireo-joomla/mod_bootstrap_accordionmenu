@@ -13,7 +13,9 @@ defined('_JEXEC') or die;
 ?>
 <?php if($params->get('load_js', 1) == 1) : ?>
 <script type="text/javascript">
-var modBootstrapAccordionMenu_hover = <?php echo (int)$params->get('js_hover', 0); ?>;
+if (typeof modBootstrapAccordionMenu_hover === "undefined") {
+  var modBootstrapAccordionMenu_hover = <?php echo (int)$params->get('js_hover', 0); ?>;
+}
 </script>
 <?php endif; ?>
 <div class="accordion" id="<?php echo $tag_id; ?>">

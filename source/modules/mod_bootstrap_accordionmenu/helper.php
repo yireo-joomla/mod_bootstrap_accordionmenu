@@ -109,7 +109,8 @@ abstract class modBootstrapAccordionMenuHelper
                 break;
         
             case 'url':
-                $item->href = $item->flink;
+                if(isset($item->flink)) $item->href = $item->flink;
+                if(isset($item->link)) $item->href = $item->link;
                 break;
         
             case 'alias':
@@ -121,7 +122,7 @@ abstract class modBootstrapAccordionMenuHelper
                 break;
         endswitch;
 
-        $item->childs = self::getChildren($item->id);
+        $item->childs = self::getChildren($item->id, $params);
 
         return $item;
     }
@@ -132,14 +133,16 @@ abstract class modBootstrapAccordionMenuHelper
      * @param JRegistry $params
      * @return array $items
      */
-    public static function getItems($params = null)
+    public static function getItems($params)
     {
         static $items = array();
         $paramsHash = md5(serialize($params));
         if(empty($items[$paramsHash])) {
             $app = JFactory::getApplication();
             $menu = $app->getMenu();
-            $items[$paramsHash] = $menu->getItems('menutype', $params->get('menutype'));
+            $menutype = $params->get('menutype');
+            //$menutype = (is_object($params)) ? $params->get('menutype') : null;
+            $items[$paramsHash] = $menu->getItems('menutype', $menutype);
             // @todo: Implement ACLs
         }
         return $items[$paramsHash];
