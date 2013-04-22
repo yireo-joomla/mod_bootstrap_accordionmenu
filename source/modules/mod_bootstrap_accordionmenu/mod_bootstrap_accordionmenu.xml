@@ -86,4 +86,8 @@
             </fieldset>
         </fields>
     </config>
+
+	<updateservers>
+		<server type="extension" priority="1" name="mod_bootstrap_accordionmenu">http://www.yireo.com/updates/mod_bootstrap_accordionmenu.xml</server>
+	</updateservers>
 </extension>
