@@ -42,7 +42,7 @@ abstract class modBootstrapAccordionMenuHelper
         if(!empty($items)) {
             $i = 0;
             foreach($items as $item) {
-                if($item->level == $params->get('startLevel', 1)) {
+                if($item->level == $params->get('startLevel', 1) && ($item->parent_id == $params->get('base'))) {
 
                     $item = self::prepareItem($item, $i, $params);
                     $item->html_id = md5($params).'-'.$item->id;
