@@ -35,6 +35,12 @@ version 1.0.3:
 version 1.0.4:
 * Pull request for alias-support
 
-pending:
+version 1.0.5-1.0.7:
+* Bug fixes for Joomla! 3.1
+
+version 1.0.8:
+* Fix when "Current" option is blank
+
+version 1.0.9:
 * Allow for a template-override of the CSS-stylesheet
 

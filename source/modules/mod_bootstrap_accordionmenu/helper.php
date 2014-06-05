@@ -162,4 +162,26 @@ abstract class modBootstrapAccordionMenuHelper
             require JModuleHelper::getLayoutPath('mod_bootstrap_accordionmenu', 'default_submenu');
         }
     }
+
+    public static function addStylesheet($css)
+    {
+        $template = JFactory::getApplication()->getTemplate();
+        $document = JFactory::getDocument();
+        if(file_exists(JPATH_SITE.'/templates/'.$template.'/css/mod_bootstrap_accordionmenu/'.$css)) {
+            $document->addStylesheet('templates/'.$template.'/css/mod_bootstrap_accordionmenu/'.$css);
+        } else {
+            $document->addStylesheet('media/mod_bootstrap_accordionmenu/css/'.$css);
+        }
+    }
+
+    public static function addScript($js)
+    {
+        $template = JFactory::getApplication()->getTemplate();
+        $document = JFactory::getDocument();
+        if(file_exists(JPATH_SITE.'/templates/'.$template.'/js/mod_bootstrap_accordionmenu/'.$js)) {
+            $document->addScript('templates/'.$template.'/js/mod_bootstrap_accordionmenu/'.$js);
+        } else {
+            $document->addScript('media/mod_bootstrap_accordionmenu/js/'.$js);
+        }
+    }
 }
