@@ -3,7 +3,7 @@
  * Joomla! module - Bootstrap Accordion Menu
  *
  * @author Yireo (info@yireo.com)
- * @copyright Copyright 2013 Yireo.com. All rights reserved
+ * @copyright Copyright 2014 Yireo.com. All rights reserved
  * @license GNU Public License
  * @link http://www.yireo.com
  */
@@ -42,7 +42,9 @@ abstract class modBootstrapAccordionMenuHelper
         if(!empty($items)) {
             $i = 0;
             foreach($items as $item) {
-                if($item->level == $params->get('startLevel', 1) && ($item->parent_id == $params->get('base'))) {
+                $base = $params->get('base');
+                if(empty($base)) $base = self::getActive()->parent_id;
+                if($item->level == $params->get('startLevel', 1) && ($item->parent_id == $base)) {
 
                     $item = self::prepareItem($item, $i, $params);
                     $item->html_id = md5($params).'-'.$item->id;
