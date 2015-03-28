@@ -30,7 +30,9 @@ $class_sfx = htmlspecialchars($params->get('class_sfx'));
 
 // Determine the tag_id
 $tag_id = trim($params->get('tag_id'));
-if(empty($tag_id)) $tag_id = md5($params);
+if(empty($tag_id)) {
+    $tag_id = md5($params);
+}
 
 // If the toplevel is not empty, load the template
 if(count($parents)) {
