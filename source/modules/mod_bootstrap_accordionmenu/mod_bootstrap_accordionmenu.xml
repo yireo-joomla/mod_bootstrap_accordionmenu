@@ -2,15 +2,15 @@
 <extension type="module" version="2.5" client="site" method="upgrade">
     <name>MOD_BOOTSTRAP_ACCORDIONMENU_TITLE</name>
     <author>Jisse Reitsma (Yireo)</author>
-    <creationDate>June 2014</creationDate>
+    <creationDate>May 2015</creationDate>
     <copyright>Copyright (C) yireo.com All rights reserved.</copyright>
     <license>GNU General Public License version 3 or later</license>
     <authorEmail>jisse@yireo.com</authorEmail>
     <authorUrl>www.yireo.com</authorUrl>
-    <version>1.0.9</version>
+    <version>1.1.0</version>
     <description>MOD_BOOTSTRAP_ACCORDIONMENU_DESC</description>
 
-    <files>
+    <files folder="site">
         <filename module="mod_bootstrap_accordionmenu">mod_bootstrap_accordionmenu.php</filename>
         <folder>tmpl</folder>
         <filename>helper.php</filename>
@@ -21,7 +21,7 @@
         <folder>mod_bootstrap_accordionmenu</folder>
     </media>
 
-    <languages>
+    <languages folder="site/language">
         <language tag="en-GB">en-GB.mod_bootstrap_accordionmenu.ini</language>
         <language tag="en-GB">en-GB.mod_bootstrap_accordionmenu.sys.ini</language>
     </languages>
