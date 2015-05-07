@@ -13,18 +13,22 @@ defined('_JEXEC') or die;
 
 // Include the syndicate functions only once
 require_once __DIR__.'/helper.php';
+$helper = new ModBootstrapAccordionMenuHelper($params);
+
+// Determine the layout
+$layout = $params->get('layout', 'default');
+if (empty($layout)) {
+    $layout = 'default';
+}
+$baseLayout = preg_replace('/^(.*):/', '', $layout);
 
 // Load CSS
-if($params->get('load_css', 1) == 1) {
-    modBootstrapAccordionMenuHelper::addStylesheet('default.css');
-}
+$helper->addStylesheet($baseLayout.'.css');
 
 // Load JavaScript
-if($params->get('load_js', 1) == 1) {
-    modBootstrapAccordionMenuHelper::addScript('default.js');
-}
+$helper->addScript($baseLayout.'.js');
 
-$parents = modBootstrapAccordionMenuHelper::getParents($params);
+$parents = $helper->getParents();
 $showAll = $params->get('showAllChildren');
 $class_sfx = htmlspecialchars($params->get('class_sfx'));
 
@@ -36,5 +40,5 @@ if(empty($tag_id)) {
 
 // If the toplevel is not empty, load the template
 if(count($parents)) {
-    require JModuleHelper::getLayoutPath('mod_bootstrap_accordionmenu', $params->get('layout', 'default'));
+    require JModuleHelper::getLayoutPath('mod_bootstrap_accordionmenu', $layout);
 }
