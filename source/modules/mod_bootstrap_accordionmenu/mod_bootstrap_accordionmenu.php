@@ -17,10 +17,12 @@ $helper = new ModBootstrapAccordionMenuHelper($params);
 
 // Determine the layout
 $layout = $params->get('layout', 'default');
+
 if (empty($layout))
 {
 	$layout = 'default';
 }
+
 $baseLayout = preg_replace('/^(.*):/', '', $layout);
 
 // Load CSS
@@ -35,6 +37,7 @@ $class_sfx = htmlspecialchars($params->get('class_sfx'));
 
 // Determine the tag_id
 $tag_id = trim($params->get('tag_id'));
+
 if (empty($tag_id))
 {
 	$tag_id = md5($params);

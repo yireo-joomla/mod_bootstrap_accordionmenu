@@ -27,11 +27,13 @@ defined('_JEXEC') or die;
 					<?php if (!empty($parent->childs)) : ?>
 						<?php $classes = array_merge($parent->classes, array()); ?>
 						<a class="<?php echo implode(' ', $classes); ?>" data-toggle="collapse"
+						   data-target="<?php echo $parent->browserNav; ?>" <?php if ($parent->browserNav == 1) : ?>target="_new"<?php endif; ?>
 						   data-parent="#<?php echo $tag_id; ?>" data-href="<?php echo $parent->href; ?>"
 						   href="#<?php echo $parent->html_id; ?>"><?php echo $parent->title; ?></a>
 					<?php else: ?>
 						<?php $classes = $parent->classes; ?>
 						<a class="<?php echo implode(' ', $classes); ?>"
+						   data-target="<?php echo $parent->browserNav; ?>" <?php if ($parent->browserNav == 1) : ?>target="_new"<?php endif; ?>
 						   href="<?php echo $parent->href; ?>"><?php echo $parent->title; ?></a>
 					<?php endif; ?>
 				</h4>

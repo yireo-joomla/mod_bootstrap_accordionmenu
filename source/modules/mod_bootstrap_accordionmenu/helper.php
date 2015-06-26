@@ -51,18 +51,21 @@ class ModBootstrapAccordionMenuHelper
 	{
 		$items = $this->getItems();
 		$parents = array();
+
 		if (!empty($items))
 		{
 			$i = 0;
+
 			foreach ($items as $item)
 			{
-
 				$base = $this->params->get('base');
 				$active = $this->getActive();
+
 				if (empty($base) && !empty($active))
 				{
 					$base = $active->parent_id;
 				}
+
 				if (empty($base))
 				{
 					continue;
@@ -70,7 +73,6 @@ class ModBootstrapAccordionMenuHelper
 
 				if ($item->level == $this->params->get('startLevel', 1) && ($item->parent_id == $base))
 				{
-
 					$item = $this->prepareItem($item, $i);
 					$item->html_id = md5($this->params) . '-' . $item->id;
 
@@ -94,9 +96,11 @@ class ModBootstrapAccordionMenuHelper
 	{
 		$items = $this->getItems();
 		$childs = array();
+
 		if (!empty($items))
 		{
 			$i = 0;
+
 			foreach ($items as $item)
 			{
 				if ($item->parent_id == $parent_id)
@@ -104,6 +108,7 @@ class ModBootstrapAccordionMenuHelper
 					$item = $this->prepareItem($item, $i);
 					$childs[] = $item;
 				}
+
 				$i++;
 			}
 		}
@@ -122,6 +127,7 @@ class ModBootstrapAccordionMenuHelper
 	public function prepareItem($item, $i)
 	{
 		$active = $this->getActive();
+
 		if (!empty($active->tree))
 		{
 			$item->active = (in_array($item->id, $active->tree)) ? true : false;
@@ -134,18 +140,22 @@ class ModBootstrapAccordionMenuHelper
 		}
 
 		$item->classes = array();
+
 		if ($item->active)
 		{
 			$item->classes[] = 'active';
 		}
+
 		if ($item->current)
 		{
 			$item->classes[] = 'current';
 		}
+
 		if ($i % 2 == 0)
 		{
 			$item->classes[] = 'even';
 		}
+
 		if ($i % 2 == 1)
 		{
 			$item->classes[] = 'odd';

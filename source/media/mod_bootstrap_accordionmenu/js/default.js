@@ -25,8 +25,13 @@ jQuery(document).ready(function() {
         });
 
         jQuery('a.accordion-parent').click(function(){
+            var target = jQuery(this).attr('data-target');
             var location = jQuery(this).attr('data-href');
-            window.location.replace(location);
+            if (location == 1) {
+                window.open(location);
+            } else {
+                window.location.replace(location);
+            }
         });
     }
 });
