@@ -27,11 +27,11 @@ defined('_JEXEC') or die;
 					<a class="accordion-toggle accordion-parent <?php echo implode(' ', $parent->classes); ?>"
 					   data-toggle="collapse" data-parent="#<?php echo $tag_id; ?>"
 					   data-href="<?php echo $parent->href; ?>"
-					   data-target="<?php echo $parent->browserNav; ?>" <?php if ($parent->browserNav == 1) : ?>target="_new"<?php endif; ?>
+					   data-target="<?php echo $parent->browserNav; ?>" <?php if (in_array($parent->browserNav, array(1, 2))) : ?>target="_new"<?php endif; ?>
 					   href="#<?php echo $parent->html_id; ?>"><?php echo $parent->title; ?></a>
 				<?php else: ?>
 					<a class="accordion-toggle <?php echo implode(' ', $parent->classes); ?>"
-					   data-target="<?php echo $parent->browserNav; ?>" <?php if ($parent->browserNav == 1) : ?>target="_new"<?php endif; ?>
+					   data-target="<?php echo $parent->browserNav; ?>" <?php if (in_array($parent->browserNav, array(1, 2))) : ?>target="_new"<?php endif; ?>
 					   href="<?php echo $parent->href; ?>"><?php echo $parent->title; ?></a>
 				<?php endif; ?>
 			</div>
