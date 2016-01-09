@@ -187,7 +187,7 @@ class ModBootstrapAccordionMenuHelper
 		endswitch;
 
 		$item->childs = $this->getChildren($item->id);
-
+		$item->anchor_css   = htmlspecialchars($item->params->get('menu-anchor_css', ''), ENT_COMPAT, 'UTF-8', false);
 		return $item;
 	}
 
