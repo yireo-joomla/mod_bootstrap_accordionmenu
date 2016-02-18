@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
 		<li class="<?php echo implode(' ', $item->classes); ?>">
 			<a href="<?php echo $item->href; ?>" <?php if (in_array($parent->browserNav, array(1, 2))) : ?>target="_new"<?php endif; ?>><?php echo $item->title; ?></a>
 			<?php if (!empty($item->childs)) : ?>
-				<?php $helper->submenu($item->childs); ?>
+				<?php $helper->submenu($item); ?>
 			<?php endif; ?>
 		</li>
 	<?php endforeach; ?>

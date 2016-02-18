@@ -39,7 +39,7 @@ defined('_JEXEC') or die;
 				<div id="<?php echo $parent->html_id; ?>"
 					 class="accordion-body collapse <?php echo $collapse_status; ?>">
 					<div class="accordion-inner">
-						<?php $helper->submenu($parent->childs); ?>
+						<?php $helper->submenu($parent); ?>
 					</div>
 				</div>
 			<?php endif; ?>

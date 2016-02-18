@@ -221,8 +221,16 @@ class ModBootstrapAccordionMenuHelper
 	 *
 	 * @return null
 	 */
-	public function submenu($items)
+	public function submenu($parent)
 	{
+        if (empty($parent->childs))
+        {
+            return;
+        }
+
+        $helper = $this;
+        $items = $parent->childs;
+
 		if (!empty($items))
 		{
 			require JModuleHelper::getLayoutPath('mod_bootstrap_accordionmenu', 'default_submenu');
