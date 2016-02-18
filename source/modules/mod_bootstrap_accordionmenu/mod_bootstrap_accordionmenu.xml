@@ -2,7 +2,7 @@
 <extension type="module" version="2.5" client="site" method="upgrade">
     <name>MOD_BOOTSTRAP_ACCORDIONMENU_TITLE</name>
     <author>Jisse Reitsma (Yireo)</author>
-    <creationDate>January 2016</creationDate>
+    <creationDate>February 2016</creationDate>
     <copyright>Copyright (C) yireo.com All rights reserved.</copyright>
     <license>GNU General Public License version 3 or later</license>
     <authorEmail>jisse@yireo.com</authorEmail>
