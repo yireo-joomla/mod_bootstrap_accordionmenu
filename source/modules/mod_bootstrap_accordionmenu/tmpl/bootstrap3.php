@@ -42,7 +42,7 @@ defined('_JEXEC') or die;
 				<div id="<?php echo $parent->html_id; ?>"
 					 class="panel-collapse collapse <?php echo $collapse_status; ?>" role="tabpanel">
 					<div class="panel-body">
-						<?php $helper->submenu($parent->childs); ?>
+						<?php $helper->submenu($parent); ?>
 					</div>
 				</div>
 			<?php endif; ?>
