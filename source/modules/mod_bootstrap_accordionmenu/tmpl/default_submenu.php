@@ -3,9 +3,9 @@
  * Joomla! module - Bootstrap Accordion Menu
  *
  * @author    Yireo (info@yireo.com)
- * @copyright Copyright 2015 Yireo.com. All rights reserved
+ * @copyright Copyright 2016 Yireo.com. All rights reserved
  * @license   GNU Public License
- * @link      http://www.yireo.com
+ * @link      https://www.yireo.com
  */
 
 // Deny direct access
