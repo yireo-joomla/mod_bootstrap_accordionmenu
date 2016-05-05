@@ -18,6 +18,16 @@ defined('_JEXEC') or die;
 class ModBootstrapAccordionMenuHelper
 {
 	/**
+	 * @var \Joomla\Registry\Registry
+	 */
+	protected $params;
+
+	/**
+	 * @var JApplicationCms
+	 */
+	protected $app;
+
+	/**
 	 * Constructor
 	 *
 	 * @param null $params
@@ -25,18 +35,17 @@ class ModBootstrapAccordionMenuHelper
 	public function __construct($params = null)
 	{
 		$this->params = $params;
+		$this->app = JFactory::getApplication();
 	}
 
 	/**
 	 * Method to return the currently active Menu-Item
 	 *
-	 * @param null
-	 *
 	 * @return mixed $active
 	 */
 	public function getActive()
 	{
-		$menu = JFactory::getApplication()->getMenu();
+		$menu = $this->app->getMenu();
 		$active = $menu->getActive();
 
 		return $active;
@@ -139,56 +148,78 @@ class ModBootstrapAccordionMenuHelper
 			$item->current = false;
 		}
 
-		$item->classes = array();
+		$item->classes = $this->getItemClasses($item, $i);
+		$item->href = $this->getItemHref($item);
+		$item->childs = $this->getChildren($item->id);
+		$item->anchor_css = htmlspecialchars($item->params->get('menu-anchor_css', ''), ENT_COMPAT, 'UTF-8', false);
+
+		return $item;
+	}
+
+	/**
+	 * @param $item
+	 * @param $i
+	 *
+	 * @return mixed
+	 */
+	protected function getItemClasses($item, $i)
+	{
+		$classes = array();
 
 		if ($item->active)
 		{
-			$item->classes[] = 'active';
+			$classes[] = 'active';
 		}
 
 		if ($item->current)
 		{
-			$item->classes[] = 'current';
+			$classes[] = 'current';
 		}
 
 		if ($i % 2 == 0)
 		{
-			$item->classes[] = 'even';
+			$classes[] = 'even';
 		}
 
 		if ($i % 2 == 1)
 		{
-			$item->classes[] = 'odd';
+			$classes[] = 'odd';
 		}
 
-		switch ($item->type) :
-			case 'separator':
-				$item->href = null;
-				break;
+		return $classes;
+	}
 
-			case 'url':
-				if (isset($item->flink))
-				{
-					$item->href = $item->flink;
-				}
-				if (isset($item->link))
-				{
-					$item->href = $item->link;
-				}
-				break;
+	/**
+	 * @param $item
+	 *
+	 * @return string
+	 */
+	protected function getItemHref($item)
+	{
+		if ($item->type == 'separator')
+		{
+			return '';
+		}
 
-			case 'alias':
-				$item->href = JRoute::_('index.php?Itemid=' . $item->params->get('aliasoptions', null));
-				break;
+		if ($item->type == 'url')
+		{
+			if (isset($item->flink))
+			{
+				return $item->flink;
+			}
 
-			default:
-				$item->href = JRoute::_('index.php?Itemid=' . $item->id);
-				break;
-		endswitch;
+			if (isset($item->link))
+			{
+				return $item->link;
+			}
+		}
 
-		$item->childs = $this->getChildren($item->id);
-		$item->anchor_css   = htmlspecialchars($item->params->get('menu-anchor_css', ''), ENT_COMPAT, 'UTF-8', false);
-		return $item;
+		if ($item->type == 'alias')
+		{
+			return JRoute::_('index.php?Itemid=' . $item->params->get('aliasoptions', null));
+		}
+
+		return JRoute::_($item->link . '&Itemid=' . $item->id);
 	}
 
 	/**
@@ -203,8 +234,7 @@ class ModBootstrapAccordionMenuHelper
 
 		if (empty($items[$paramsHash]))
 		{
-			$app = JFactory::getApplication();
-			$menu = $app->getMenu();
+			$menu = $this->app->getMenu();
 			$menutype = $this->params->get('menutype');
 			//$menutype = (is_object($this->params)) ? $this->params->get('menutype') : null;
 			$items[$paramsHash] = $menu->getItems('menutype', $menutype);
@@ -217,19 +247,16 @@ class ModBootstrapAccordionMenuHelper
 	/**
 	 * Method to print a submenu
 	 *
-	 * @param array $childs
-	 *
-	 * @return null
+	 * @param object $parent
 	 */
 	public function submenu($parent)
 	{
-        if (empty($parent->childs))
-        {
-            return;
-        }
+		if (empty($parent->childs))
+		{
+			return;
+		}
 
-        $helper = $this;
-        $items = $parent->childs;
+		$items = $parent->childs;
 
 		if (!empty($items))
 		{
@@ -252,17 +279,17 @@ class ModBootstrapAccordionMenuHelper
 			return false;
 		}
 
-		$template = JFactory::getApplication()->getTemplate();
+		$template = $this->app->getTemplate();
 		$document = JFactory::getDocument();
 
 		if (file_exists(JPATH_SITE . '/templates/' . $template . '/css/mod_bootstrap_accordionmenu/' . $css))
 		{
-			$document->addStylesheet('templates/' . $template . '/css/mod_bootstrap_accordionmenu/' . $css);
+			$document->addStyleSheet('templates/' . $template . '/css/mod_bootstrap_accordionmenu/' . $css);
+
+			return true;
 		}
-		else
-		{
-			$document->addStylesheet('media/mod_bootstrap_accordionmenu/css/' . $css);
-		}
+
+		$document->addStyleSheet('media/mod_bootstrap_accordionmenu/css/' . $css);
 
 		return true;
 	}
@@ -282,17 +309,17 @@ class ModBootstrapAccordionMenuHelper
 			return false;
 		}
 
-		$template = JFactory::getApplication()->getTemplate();
+		$template = $this->app->getTemplate();
 		$document = JFactory::getDocument();
 
 		if (file_exists(JPATH_SITE . '/templates/' . $template . '/js/mod_bootstrap_accordionmenu/' . $js))
 		{
 			$document->addScript('templates/' . $template . '/js/mod_bootstrap_accordionmenu/' . $js);
+
+			return true;
 		}
-		else
-		{
-			$document->addScript('media/mod_bootstrap_accordionmenu/js/' . $js);
-		}
+
+		$document->addScript('media/mod_bootstrap_accordionmenu/js/' . $js);
 
 		return true;
 	}

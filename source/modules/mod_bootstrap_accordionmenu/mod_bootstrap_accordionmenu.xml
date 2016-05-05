@@ -7,7 +7,7 @@
     <license>GNU General Public License version 3 or later</license>
     <authorEmail>jisse@yireo.com</authorEmail>
     <authorUrl>www.yireo.com</authorUrl>
-    <version>1.1.5</version>
+    <version>1.1.7</version>
     <description>MOD_BOOTSTRAP_ACCORDIONMENU_DESC</description>
 
     <files folder="site">
@@ -29,16 +29,18 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
-                <field name="menutype" type="menu" label="MOD_MENU_FIELD_MENUTYPE_LABEL" description="MOD_MENU_FIELD_MENUTYPE_DESC" />
-				<field
-					name="base"
-					type="menuitem"
-					label="MOD_MENU_FIELD_ACTIVE_LABEL"
-					description="MOD_MENU_FIELD_ACTIVE_DESC"
-					>
-					<option value="">JCURRENT</option>
-				</field>
-                <field name="startLevel" type="list" default="1" label="MOD_MENU_FIELD_STARTLEVEL_LABEL" description="MOD_MENU_FIELD_STARTLEVEL_DESC">
+                <field name="menutype" type="menu" label="MOD_MENU_FIELD_MENUTYPE_LABEL"
+                       description="MOD_MENU_FIELD_MENUTYPE_DESC"/>
+                <field
+                        name="base"
+                        type="menuitem"
+                        label="MOD_MENU_FIELD_ACTIVE_LABEL"
+                        description="MOD_MENU_FIELD_ACTIVE_DESC"
+                >
+                    <option value="">JCURRENT</option>
+                </field>
+                <field name="startLevel" type="list" default="1" label="MOD_MENU_FIELD_STARTLEVEL_LABEL"
+                       description="MOD_MENU_FIELD_STARTLEVEL_DESC">
                     <option value="1">J1</option>
                     <option value="2">J2</option>
                     <option value="3">J3</option>
@@ -50,7 +52,8 @@
                     <option value="9">J9</option>
                     <option value="10">J10</option>
                 </field>
-                <field name="endLevel" type="list" default="0" label="MOD_MENU_FIELD_ENDLEVEL_LABEL" description="MOD_MENU_FIELD_ENDLEVEL_DESC">
+                <field name="endLevel" type="list" default="0" label="MOD_MENU_FIELD_ENDLEVEL_LABEL"
+                       description="MOD_MENU_FIELD_ENDLEVEL_DESC">
                     <option value="0">JALL</option>
                     <option value="1">J1</option>
                     <option value="2">J2</option>
@@ -65,36 +68,51 @@
                 </field>
             </fieldset>
             <fieldset
-                name="advanced">
-                <field name="tag_id" type="text" label="MOD_MENU_FIELD_TAG_ID_LABEL" description="MOD_MENU_FIELD_TAG_ID_DESC" />
-                <field name="class_sfx" type="text" label="MOD_MENU_FIELD_CLASS_LABEL" description="MOD_MENU_FIELD_CLASS_DESC" />
-                <field name="load_css" type="list" default="1" label="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_CSS" description="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_CSS_DESC">
+                    label="MOD_BOOTSTRAP_ACCORDIONMENU_FIELDSET_OTHER"
+                    name="other">
+                <field name="tag_id" type="text" label="MOD_MENU_FIELD_TAG_ID_LABEL"
+                       description="MOD_MENU_FIELD_TAG_ID_DESC"/>
+                <field name="class_sfx" type="text" label="MOD_MENU_FIELD_CLASS_LABEL"
+                       description="MOD_MENU_FIELD_CLASS_DESC"/>
+                <field name="load_css" type="radio" default="1" label="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_CSS"
+                       class="btn-group btn-group-yesno"
+                       description="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_CSS_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="load_js" type="list" default="1" label="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_JS" description="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_JS_DESC">
+                <field name="load_js" type="radio" default="1" label="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_JS"
+                       class="btn-group btn-group-yesno"
+                       description="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_JS_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="js_hover" type="list" default="0" label="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_JS_HOVER" description="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_JS_HOVER_DESC">
+                <field name="js_hover" type="radio" default="0" label="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_JS_HOVER"
+                       class="btn-group btn-group-yesno"
+                       description="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_JS_HOVER_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
-                <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
-                <field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL"
+                       description="JFIELD_ALT_MODULE_LAYOUT_DESC"/>
+                <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                       description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
+                <field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL"
+                       description="COM_MODULES_FIELD_CACHING_DESC">
                     <option value="1">JGLOBAL_USE_GLOBAL</option>
                     <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
                 </field>
-                <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+                <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                       description="COM_MODULES_FIELD_CACHE_TIME_DESC"/>
                 <field name="cachemode" type="hidden" default="itemid">
-                   <option value="itemid"></option>
+                    <option value="itemid"></option>
                 </field>
             </fieldset>
         </fields>
     </config>
 
-	<updateservers>
-		<server type="extension" priority="1" name="mod_bootstrap_accordionmenu">http://www.yireo.com/updates/mod_bootstrap_accordionmenu.xml</server>
-	</updateservers>
+    <updateservers>
+        <server type="extension" priority="1" name="mod_bootstrap_accordionmenu">
+            https://www.yireo.com/updates/mod_bootstrap_accordionmenu.xml
+        </server>
+    </updateservers>
 </extension>
