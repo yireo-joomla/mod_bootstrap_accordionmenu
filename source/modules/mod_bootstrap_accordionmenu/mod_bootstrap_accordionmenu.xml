@@ -2,12 +2,12 @@
 <extension type="module" version="2.5" client="site" method="upgrade">
     <name>MOD_BOOTSTRAP_ACCORDIONMENU_TITLE</name>
     <author>Jisse Reitsma (Yireo)</author>
-    <creationDate>February 2016</creationDate>
+    <creationDate>May 2016</creationDate>
     <copyright>Copyright (C) yireo.com All rights reserved.</copyright>
     <license>GNU General Public License version 3 or later</license>
     <authorEmail>jisse@yireo.com</authorEmail>
     <authorUrl>www.yireo.com</authorUrl>
-    <version>1.1.7</version>
+    <version>1.2.0</version>
     <description>MOD_BOOTSTRAP_ACCORDIONMENU_DESC</description>
 
     <files folder="site">
@@ -37,6 +37,7 @@
                         label="MOD_MENU_FIELD_ACTIVE_LABEL"
                         description="MOD_MENU_FIELD_ACTIVE_DESC"
                 >
+                    <option value="1">Root</option>
                     <option value="">JCURRENT</option>
                 </field>
                 <field name="startLevel" type="list" default="1" label="MOD_MENU_FIELD_STARTLEVEL_LABEL"
@@ -74,6 +75,12 @@
                        description="MOD_MENU_FIELD_TAG_ID_DESC"/>
                 <field name="class_sfx" type="text" label="MOD_MENU_FIELD_CLASS_LABEL"
                        description="MOD_MENU_FIELD_CLASS_DESC"/>
+                <field name="add_button" type="radio" default="0" label="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_ADD_BUTTON"
+                       class="btn-group btn-group-yesno"
+                       description="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_ADD_BUTTON_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
                 <field name="load_css" type="radio" default="1" label="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_CSS"
                        class="btn-group btn-group-yesno"
                        description="MOD_BOOTSTRAP_ACCORDIONMENU_FIELD_LOAD_CSS_DESC">

@@ -36,6 +36,7 @@ class ModBootstrapAccordionMenuHelper
 	{
 		$this->params = $params;
 		$this->app = JFactory::getApplication();
+		$this->doc = JFactory::getDocument();
 	}
 
 	/**
@@ -74,7 +75,7 @@ class ModBootstrapAccordionMenuHelper
 				{
 					$base = $active->parent_id;
 				}
-
+				
 				if (empty($base))
 				{
 					continue;
@@ -280,7 +281,7 @@ class ModBootstrapAccordionMenuHelper
 		}
 
 		$template = $this->app->getTemplate();
-		$document = JFactory::getDocument();
+		$document = $this->doc;
 
 		if (file_exists(JPATH_SITE . '/templates/' . $template . '/css/mod_bootstrap_accordionmenu/' . $css))
 		{
@@ -310,7 +311,7 @@ class ModBootstrapAccordionMenuHelper
 		}
 
 		$template = $this->app->getTemplate();
-		$document = JFactory::getDocument();
+		$document = $this->doc;
 
 		if (file_exists(JPATH_SITE . '/templates/' . $template . '/js/mod_bootstrap_accordionmenu/' . $js))
 		{

@@ -18,7 +18,16 @@ defined('_JEXEC') or die;
 		}
 	</script>
 <?php endif; ?>
-<div class="panel-group" id="<?php echo $tag_id; ?>" role="tablist" aria-multiselectable="true">
+<div class="bootstrapaccordionmenu">
+<?php if ($params->get('add_button', 0) == 1) : ?>
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#<?php echo $tag_id; ?>" expanded="false">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</button>
+<?php endif; ?>
+<div class="<?php if ($params->get('add_button', 0) == 1) : ?>collapse navbar-collapse <?php endif; ?>panel-group" id="<?php echo $tag_id; ?>" role="tablist" aria-multiselectable="true">
 	<?php foreach ($parents as $parent) : ?>
 		<?php $collapse_status = ($parent->active) ? 'in' : 'out'; ?>
 		<div class="panel panel-default">
@@ -52,4 +61,5 @@ defined('_JEXEC') or die;
 			<?php endif; ?>
 		</div>
 	<?php endforeach; ?>
+</div>
 </div>
