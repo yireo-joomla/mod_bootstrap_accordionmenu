@@ -2,7 +2,7 @@
 <extension type="module" version="2.5" client="site" method="upgrade">
     <name>MOD_BOOTSTRAP_ACCORDIONMENU_TITLE</name>
     <author>Jisse Reitsma (Yireo)</author>
-    <creationDate>May 2016</creationDate>
+    <creationDate>June 2016</creationDate>
     <copyright>Copyright (C) yireo.com All rights reserved.</copyright>
     <license>GNU General Public License version 3 or later</license>
     <authorEmail>jisse@yireo.com</authorEmail>
@@ -21,7 +21,7 @@
         <folder>mod_bootstrap_accordionmenu</folder>
     </media>
 
-    <languages folder="site/language">
+    <languages folder="site/language/en-GB">
         <language tag="en-GB">en-GB.mod_bootstrap_accordionmenu.ini</language>
         <language tag="en-GB">en-GB.mod_bootstrap_accordionmenu.sys.ini</language>
     </languages>
